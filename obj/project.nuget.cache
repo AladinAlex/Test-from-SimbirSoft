@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "cSxOwUhNixlp1LB9P5iP04+zOoAz5t5auR4uAFUaD11zqG+OEacXZbh5wQALJvTA/eXsLN6tn52iNCUfcoWm9w==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Братья\\Desktop\\Интенсив по C#\\Intensive\\Intensive.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Братья\\.nuget\\packages\\htmlagilitypack\\1.11.36\\htmlagilitypack.1.11.36.nupkg.sha512"
+  ],
+  "logs": []
+}
