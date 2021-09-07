@@ -5,23 +5,30 @@ namespace Intensive
 {
     class Save_html_page // сделать проверку URL, если верно, то вывод в консоль
     {
+        public string urI;
+
+        public Save_html_page()
+        { 
+            
+        }
+        public Save_html_page(string URI)
+        {
+            urI = URI;
+        }
+
         string desktop_path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\download_html_file.html";// { get; set; }
         public string Desktop_path
         {
             get { return desktop_path; }
         }
-        string Input_link_HTML_page() // метод получения web-страницы от пользователя
-        {
-            return Console.ReadLine();
-        }
+        public Uri uri;
         internal void Get_data_from_HTML_page() // скачивание html-страницы на рабочий стол компьютера
         {
-            WebClient client = new WebClient();
-            Uri uri;
+            WebClient client = new WebClient();         
             try
             {
+                uri = new Uri(urI);
                 Console.WriteLine("Проверяется URI-адрес");
-                uri = new Uri(Input_link_HTML_page());                              
                 client.DownloadFile(uri, desktop_path);
                 Console.WriteLine("URI-адрес верный");
                 Console.WriteLine("Файл скачан на рабочий стол");
@@ -32,7 +39,6 @@ namespace Intensive
                 Console.ReadKey();
                 Environment.Exit(1);
             }
-            
             catch (WebException)
             {
                 Console.WriteLine("Отсутствует подключение к интернету, либо такого URI не существует, нажмите любую кнопку, чтобы выйти из программы");
@@ -40,6 +46,10 @@ namespace Intensive
                 Environment.Exit(1);
             }
             
+        }
+        public Uri uri_
+        {
+            get { return uri; }
         }
     }
 }

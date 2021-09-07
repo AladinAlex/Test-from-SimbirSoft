@@ -48,6 +48,10 @@
             "HtmlAgilityPack": {
               "target": "Package",
               "version": "[1.11.36, )"
+            },
+            "System.Data.OleDb": {
+              "target": "Package",
+              "version": "[5.0.0, )"
             }
           },
           "imports": [

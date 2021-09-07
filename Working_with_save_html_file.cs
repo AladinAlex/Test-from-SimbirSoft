@@ -29,7 +29,7 @@ namespace Intensive
             Array.Sort(mas);
             return mas;
         }
-        internal void count_unique_words()
+        internal Dictionary<string, int> count_unique_words()
         {
             delete_html_code();
             Dictionary<string, int> result = new Dictionary<string, int>();
@@ -45,9 +45,10 @@ namespace Intensive
                     result.TryGetValue(result_mas[i], out value);
                     result[result_mas[i]] = value + 1; }
             }
-            output(result);
+            //output(result);
+            return result;
         }
-        void output(Dictionary<string, int> result)
+        internal void output(Dictionary<string, int> result)
         {
             foreach (var a in result)
                 Console.WriteLine("{0} - {1}", a.Key, a.Value);
