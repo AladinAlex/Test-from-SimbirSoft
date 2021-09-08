@@ -22,7 +22,6 @@ namespace Intensive
             Working_with_save_html_file project_ = new Working_with_save_html_file();
             DATA = project_.count_unique_words();
             project_.output(DATA);
-            //project_.count_unique_words();
             DateBase date = new DateBase(uRi, DATA);
             date.main();
         }

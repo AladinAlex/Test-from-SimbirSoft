@@ -5,7 +5,7 @@ using HtmlAgilityPack;
 
 namespace Intensive
 {
-    class Working_with_save_html_file // https://www.simbirsoft.com/
+    class Working_with_save_html_file
     {
         string k;
         void delete_html_code()
@@ -35,7 +35,6 @@ namespace Intensive
             Dictionary<string, int> result = new Dictionary<string, int>();
             string[] result_mas = delete_char_and_sort(k);
             result.Add(result_mas[0], 1);
-
             for (int i = 1; i < result_mas.Length; i++)
             {
                 if (result_mas[i] != result_mas[i - 1])
@@ -45,7 +44,6 @@ namespace Intensive
                     result.TryGetValue(result_mas[i], out value);
                     result[result_mas[i]] = value + 1; }
             }
-            //output(result);
             return result;
         }
         internal void output(Dictionary<string, int> result)

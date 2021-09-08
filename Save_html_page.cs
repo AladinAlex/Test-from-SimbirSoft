@@ -3,7 +3,7 @@ using System.Net;
 
 namespace Intensive
 {
-    class Save_html_page // сделать проверку URL, если верно, то вывод в консоль
+    class Save_html_page
     {
         public string urI;
 
@@ -22,7 +22,7 @@ namespace Intensive
             get { return desktop_path; }
         }
         public Uri uri;
-        internal void Get_data_from_HTML_page() // скачивание html-страницы на рабочий стол компьютера
+        internal void Get_data_from_HTML_page()
         {
             WebClient client = new WebClient();         
             try
@@ -44,12 +44,7 @@ namespace Intensive
                 Console.WriteLine("Отсутствует подключение к интернету, либо такого URI не существует, нажмите любую кнопку, чтобы выйти из программы");
                 Console.ReadKey();
                 Environment.Exit(1);
-            }
-            
-        }
-        public Uri uri_
-        {
-            get { return uri; }
+            }            
         }
     }
 }

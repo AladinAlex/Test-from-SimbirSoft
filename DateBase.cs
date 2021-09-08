@@ -14,8 +14,6 @@ namespace Intensive
         private OleDbConnection myConnection;
         public string Uri;
         Dictionary<string, int> date = new Dictionary<string, int>();
-        public DateBase()
-        { }
         public DateBase(string uRi, Dictionary<string, int> DATA)
         {
             Uri = uRi;
@@ -35,18 +33,7 @@ namespace Intensive
                 command = new OleDbCommand(query, myConnection);
                 command.ExecuteNonQuery();
                 // ввод данных
-                int i = 1;
-                OleDbCommand commandQuery = new OleDbCommand(connectString);
-                foreach (KeyValuePair<string, int> a in date)
-                {
-                    string h = a.Key;
-                    h = h.Replace("'", "");
-
-                    string Query = $"INSERT INTO " + "[" + Uri + "] " + "([Id], [Word], [Unique]) VALUES (" + i +",'" + h + "', '" + a.Value + "');";
-                    commandQuery = new OleDbCommand(Query, myConnection);
-                    commandQuery.ExecuteNonQuery();
-                    i++;
-                }
+                Output_in_BD(date, Uri);
                 Console.WriteLine("Создана таблица с уникальными слова сайта."); //https://www.simbirsoft.com/
             }
             catch (OleDbException)
@@ -55,23 +42,27 @@ namespace Intensive
                 string deleteTable = "DELETE FROM [" + Uri + "];";
                 OleDbCommand delete_command = new OleDbCommand(deleteTable, myConnection);
                 delete_command.ExecuteNonQuery();
-                //ввод данных
-                int i = 1;
-                OleDbCommand commandQuery = new OleDbCommand(connectString);
-                foreach (KeyValuePair<string, int> a in date)
-                {
-                    string h = a.Key;
-                    h = h.Replace("'", "");
-                    string Query = $"INSERT INTO " + "[" + Uri + "] " + "([Id], [Word], [Unique]) VALUES (" + i + ",'" + h + "', '" + a.Value + "');";
-                    commandQuery = new OleDbCommand(Query, myConnection);
-                    commandQuery.ExecuteNonQuery();
-                    i++;
-                }
+                //ввод данных 
+                Output_in_BD(date, Uri);
                 Console.WriteLine($"Таблица {Uri} перезаписана.");
             }
             finally
             {
                 myConnection.Close();
+            }
+        }
+        void Output_in_BD (Dictionary<string, int> date, string Uri)
+        {
+            int i = 1;
+            OleDbCommand commandQuery = new OleDbCommand(connectString);
+            foreach (KeyValuePair<string, int> a in date)
+            {
+                string h = a.Key;
+                h = h.Replace("'", "");
+                string Query = $"INSERT INTO " + "[" + Uri + "] " + "([Id], [Word], [Unique]) VALUES (" + i + ",'" + h + "', '" + a.Value + "');";
+                commandQuery = new OleDbCommand(Query, myConnection);
+                commandQuery.ExecuteNonQuery();
+                i++;
             }
         }
     }
